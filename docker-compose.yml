@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  frontend:
+    build: ./frontend/frontend  # Adjust the path to point to the correct Dockerfile location
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
